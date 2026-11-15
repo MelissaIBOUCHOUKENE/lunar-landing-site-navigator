@@ -4,7 +4,7 @@ Projet pour le **NASA Space Apps Challenge 2026** — défi « Lunar Landing Sit
 
 Outil web pour comparer rapidement deux sites d'atterrissage lunaires : position du **Soleil** et de la **Terre** par rapport à l'horizon, potentiel d'**énergie solaire** et de **communication directe avec la Terre**, sur une période de 30 jours.
 
-**Démo en ligne :** _(colle ici ton lien GitHub Pages)_
+**Démo en ligne :** _(https://melissaibouchoukene.github.io/lunar-landing-site-navigator/)_
 
 ## Fonctionnalités
 - Comparaison côte à côte de deux sites (17 sites : Apollo, Chang'e, Chandrayaan-3, SLIM, pôle sud / Artemis…).
