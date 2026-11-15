@@ -104,7 +104,7 @@ dt.onchange=()=>{const v=Date.parse(dt.value+":00Z");if(!isNaN(v)){T=v;all()}};
 document.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{T+=b.dataset.d*DAY;setDt();all()});
 document.getElementById("ld").onclick=()=>document.getElementById("fi").click();
 document.getElementById("fi").onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{try{DATA=JSON.parse(t);T=Math.max(T,Date.parse(DATA.start));setDt();all()}catch(x){alert("Invalid JSON file")}})};
-const st=m=>{document.querySelector(".sub").textContent+=" ["+m+"]"};fetch("data.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(d=>{if(!d||!d.sites)throw new Error("invalid format");DATA=d;T=Math.max(T,Date.parse(d.start));setDt();all()}).catch(e=>st("data.json not loaded: "+e.message));
+fetch("data.json").then(r=>r.ok?r.json():null).then(d=>{if(d&&d.sites){DATA=d;T=Math.max(T,Date.parse(d.start));setDt();all()}}).catch(()=>{});
 addEventListener("resize",all);
 </script>
 </body>
