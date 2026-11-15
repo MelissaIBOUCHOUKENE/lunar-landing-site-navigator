@@ -65,7 +65,7 @@ const fmt=e=>e.h===null?"> 30 d":(e.h<48?e.h+" h":(e.h/24).toFixed(1)+" d");
 const lab=e=>e.up?"Sets in":"Rises in";
 const cls=(v,a,b)=>v>=a?"ok":v>=b?"mid":"bad";
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-function setup(c){const r=c.getBoundingClientRect(),p=devicePixelRatio||1;c.width=r.width*p;c.height=r.height*p;const x=c.getContext("2d");x.scale(p,p);x.clearRect(0,0,r.width,r.height);return[x,r.width,r.height]}
+function setup(c){const r=c.getBoundingClientRect(),p=Math.max(devicePixelRatio||1,2);c.width=Math.round(r.width*p);c.height=Math.round(r.height*p);const x=c.getContext("2d");x.scale(c.width/r.width,c.height/r.height);x.clearRect(0,0,r.width,r.height);return[x,r.width,r.height]}
 function sky(c,s){const[x,W,H]=setup(c),a=-15,b=30,Y=e=>H-(e-a)/(b-a)*H,X=z=>z/360*W,p=at(s,T);
  x.fillStyle=css("--bd");x.globalAlpha=.25;x.fillRect(0,Y(0),W,H-Y(0));x.globalAlpha=1;
  x.strokeStyle=css("--mut");x.beginPath();x.moveTo(0,Y(0));x.lineTo(W,Y(0));x.stroke();
@@ -77,7 +77,7 @@ function sky(c,s){const[x,W,H]=setup(c),a=-15,b=30,Y=e=>H-(e-a)/(b-a)*H,X=z=>z/3
 function tl(c,s){const[x,W,H]=setup(c),t0=T-3*DAY,N=360,st=DAY*30/N,pts=[];let lo=-10,hi=15;
  for(let i=0;i<N;i++){const p=at(s,t0+i*st);pts.push(p);lo=Math.min(lo,p.sun[1],p.earth[1]);hi=Math.max(hi,p.sun[1],p.earth[1])}
  const Y=e=>H-14-(e-lo)/(hi-lo)*(H-18),X=i=>i/(N-1)*W;
- [["sun","--sun"],["earth","--ear"]].forEach(([k,col])=>{x.strokeStyle=x.fillStyle=css(col);x.beginPath();pts.forEach((p,i)=>i?x.lineTo(X(i),Y(p[k][1])):x.moveTo(X(i),Y(p[k][1])));x.stroke();
+ [["sun","--sun"],["earth","--ear"]].forEach(([k,col])=>{x.strokeStyle=x.fillStyle=css(col);x.lineWidth=1.8;x.beginPath();pts.forEach((p,i)=>i?x.lineTo(X(i),Y(p[k][1])):x.moveTo(X(i),Y(p[k][1])));x.stroke();
   x.globalAlpha=.15;x.lineTo(W,Y(0));x.lineTo(0,Y(0));x.fill();x.globalAlpha=1});
  x.strokeStyle=css("--mut");x.beginPath();x.moveTo(0,Y(0));x.lineTo(W,Y(0));x.stroke();
  x.fillStyle=css("--mut");x.font="11px system-ui";for(let d=0;d<=30;d+=5){const t=new Date(t0+d*DAY);x.fillText(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][t.getUTCMonth()]+" "+t.getUTCDate(),Math.min(W-38,X(d/30*(N-1))),H-2)}
