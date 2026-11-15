@@ -4,7 +4,7 @@ Project for the **2026 NASA Space Apps Challenge** — "Lunar Landing Site Navig
 
 A web tool to quickly compare two lunar landing sites: **Sun** and **Earth** positions relative to the horizon, **solar power** potential and **direct-to-Earth communication** windows over 30 days.
 
-**Live demo:** https://melissaibouchoukene.github.io/lunar-landing-site-navigator/
+**Live demo:** https://lunar-site-navigator.github.io/lunar-landing-site-navigator/
 
 ## Features
 - Side-by-side comparison of two sites (17 sites: Apollo, Chang'e, Chandrayaan-3, SLIM, south pole / Artemis candidates...).
